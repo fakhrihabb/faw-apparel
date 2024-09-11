@@ -85,3 +85,16 @@ membuat proyek baru di PWS, mencatat credentials, menambahkan tautan PWS ke ALLO
 
 # Bagan request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 ![Bagan Django](https://i.imghippo.com/files/btdOg1726025205.png)
+Pertama, client mengirimkan request ke web server. Web server kemudian meneruskan request ke URLs. URLs kemudian meneruskan request ke views yang berkesesuaian. Setelah view menerima request, views akan meneruskan ke models untuk memperoleh data yang dibutuhkan. Lalu, data diteruskan ke templates, dan disesuaikan dalam templates. Setelah memperoleh tampilan yang sesuai, response diteruskan oleh views.py kembali ke web server. Response kemudian diberikan ke client.
+
+# Alasan framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak
+Terdapat beberapa alasan mengapa framework Django dijadikan permulaan pembelajaran, antara lain:
+## 1. Penggunaan yang mudah
+Django dirancang dengan prinsip "batteries included", yang berarti kebanyakan fitur Django siap digunakan tanpa diperlukannya penambahan konfigurasi lain. Framework Django diciptakan dengan struktur yang jelas dan terorganisir, contohnya MVT, sehingga lebih mudah dipahami dan diimplementasikan.
+## 2. Dokumentasi yang komprehensif
+Terdapat sangat banyak dokumentasi yang berisikan langkah demi langkah penggunaan Django. Pengguna dapat mengakses dokumentasi yang tersedia _online_ kapan pun dan di mana pun. Akibatnya, Django semakin mudah untuk dipahami.
+## 3. Komunitas yang luas
+Django digunakan oleh sangat banyak orang. Dengan demikian, banyak forum diskusi _online_ yang ditujukan khusus untuk membahas framework ini. Apabila pengguna menghadapi kesulitan, kemungkinan besar orang lain telah menghadapi masalah yang sama dan solusinya telah dibagikan dalam sebuah forum diskusi _online_.
+
+# Alasan model pada Django disebut sebagai ORM
+Django disebut sebagai ORM (Object-Relational Mapping) karena memiliki fungsi sebagai penghubung objek Python dengan database relasional (PostgreSQL, MySQL, SQLite, dll.) dengan cara yang efisien dan otomatis.
