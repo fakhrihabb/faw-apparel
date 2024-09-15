@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from main.forms import ProductEntryForm
 from main.models import Product
+from django.http import HttpResponse
+from django.core import serializers
 def show_main(request):
     product_entries = Product.objects.all()
     context = {
@@ -21,4 +23,8 @@ def create_product_entry(request):
 
     context = {'form': form}
     return render(request, "create_product_entry.html", context)
-# Create your views here.
+
+def show_xml(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
