@@ -100,3 +100,8 @@ Django digunakan oleh sangat banyak orang. Dengan demikian, banyak forum diskusi
 
 ## 4. Alasan model pada Django disebut sebagai ORM
 Django disebut sebagai ORM (Object-Relational Mapping) karena memiliki fungsi sebagai penghubung objek Python dengan database relasional (PostgreSQL, MySQL, SQLite, dll.) dengan cara yang efisien dan otomatis.
+
+
+# Tugas 3
+
+## 1. Kenapa _data delivery_ diperlukan dalam pengimplementasian sebuah platform?
