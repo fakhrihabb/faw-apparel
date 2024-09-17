@@ -104,4 +104,11 @@ Django disebut sebagai ORM (Object-Relational Mapping) karena memiliki fungsi se
 
 # Tugas 3
 
-## 1. Kenapa _data delivery_ diperlukan dalam pengimplementasian sebuah platform?
+## 1. Pentingnya Implementasi Data Delivery dalam Sebuah Platform
+Secara definisi, _data delivery_ adalah proses pemindahan data dari satu titik ke titik lainnya. Salah satu contoh _data delivery_ adalah penggunaan API pada platform. Adapun alasan perlunya diimplementasikan _data delivery_, antara lain:
+**a. _User-experience_ yang baik:** Sistem _data delivery_ yang mumpuni diperlukan oleh sebuah platform agar pengguna dapat memperoleh informasi yang diinginkan secara tepat waktu, seperti konten terbaru, preferensi pengguna, dan data transaksi.
+**b. Integrasi dengan layanan lain:** Kebanyakan platform bergantung kepada layanan pihak ketiga, seperti sistem pembayaran, _tools_ analitik, dsb. _Data delivery_ sangat krusial bagi layanan-layanan ini untuk dapat berfungsi dengan baik.
+**c. Pemrosesan data _real-time_:** Pemrosesan data _real-time_ penting agar fitur-fitur kebanyakan platform dapat berfungsi, seperti notifikasi, pembaruan grafik (co: harga saham), dll. Sistem _data delivery_ yang efektif dan efisien penting agar fitur-fitur ini dapat berfungsi semestinya.
+
+## 2. XML Vs Json
+XML (_Extensible Markup Language_) dan JSON (JavaScript _Object Notation_) adalah format serialisasi data yang memperbolehkan pertukaran data antar aplikasi, platform, atau sistem. Apabila kita bekerja dengan tipe data yang berbeda-beda dan variabel yang banyak, maka XML lebih baik untuk digunakan. Hal ini dikarenakan XML memeriksa _error_ dalam data yang kompleks secara lebih efisien daripada JSON, karena XML memang difokuskan untuk menyimpan data dengan cara yang _machine-readable_. XML juga memiliki _tools_ dan _libraries_ yang sudah cukup berkembang dan dapat digunakan untuk sistem-sistem lawas yang masih digunakan. Sementara itu, JSON didesain untuk pertukaran data dengan format yang lebih sederhana dan efisien, sehingga memiliki performa dan kecepatan yang cenderung lebih tinggi. Dengan demikian JSON lebih diutamakan untuk API, aplikasi _mobile_, dan penyimpanan data, sementara XML lebih baik untuk data dengan struktur yang lebih kompleks dan membutuhkan pertukaran data.
