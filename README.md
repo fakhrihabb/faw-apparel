@@ -112,3 +112,7 @@ Secara definisi, _data delivery_ adalah proses pemindahan data dari satu titik k
 
 ## 2. XML Vs Json
 XML (_Extensible Markup Language_) dan JSON (JavaScript _Object Notation_) adalah format serialisasi data yang memperbolehkan pertukaran data antar aplikasi, platform, atau sistem. Apabila kita bekerja dengan tipe data yang berbeda-beda dan variabel yang banyak, maka XML lebih baik untuk digunakan. Hal ini dikarenakan XML memeriksa _error_ dalam data yang kompleks secara lebih efisien daripada JSON, karena XML memang difokuskan untuk menyimpan data dengan cara yang _machine-readable_. XML juga memiliki _tools_ dan _libraries_ yang sudah cukup berkembang dan dapat digunakan untuk sistem-sistem lawas yang masih digunakan. Sementara itu, JSON didesain untuk pertukaran data dengan format yang lebih sederhana dan efisien, sehingga memiliki performa dan kecepatan yang cenderung lebih tinggi. Dengan demikian JSON lebih diutamakan untuk API, aplikasi _mobile_, dan penyimpanan data, sementara XML lebih baik untuk data dengan struktur yang lebih kompleks dan membutuhkan pertukaran data.
+
+Meski sama-sama memiliki kelebihan dan kekurangan, format JSON lebih umum digunakan daripada XML. Hal ini dikarenakan JSON tidak sekompleks XML dan tidak menggunakan struktur tags, sehingga lebih mudah dibaca dan dipahami oleh manusia. Format JSOn juga dapat menjadi representasi data yang sama dengan XML tetapi dengan ukuran file yang lebih kecil. Selain itu, JSON terkenal lebih aman dari XML, karena XML rentan terhadap modifikasi tanpa izin.
+
+## 3. Method is_valid()
