@@ -116,3 +116,22 @@ XML (_Extensible Markup Language_) dan JSON (JavaScript _Object Notation_) adala
 Meski sama-sama memiliki kelebihan dan kekurangan, format JSON lebih umum digunakan daripada XML. Hal ini dikarenakan JSON tidak sekompleks XML dan tidak menggunakan struktur tags, sehingga lebih mudah dibaca dan dipahami oleh manusia. Format JSOn juga dapat menjadi representasi data yang sama dengan XML tetapi dengan ukuran file yang lebih kecil. Selain itu, JSON terkenal lebih aman dari XML, karena XML rentan terhadap modifikasi tanpa izin.
 
 ## 3. Method is_valid()
+Method is_valid() dibutuhkan untuk memastikan bahwa data yang dimasukkan ke form sudah benar sebelum diproses lebih lanjut (misalnya disimpan ke database). Dengan cara ini, data yang tidak valid dapat ditangani (misalnya dengan menampilkan pesan kesalahan kepada pengguna) dan error atau hasil yang tidak diinginkan ketika memproses data yang tidak sesuai dapat dihindari.
+
+## 4. Pentingnya csrf_token
+csrf_token (Cross-Site Request Forgery token) dibutuhkan untuk memastikan bahwa permintaan yang dikirimkan oleh pengguna berasal dari sumber yang sah, yaitu aplikasi web itu sendiri. Django menggunakan CSRF token untuk memverifikasi bahwa setiap permintaan POST (atau metode HTTP lainnya yang mengubah data) berasal dari pengguna yang valid, bukan dari sumber eksternal yang berbahaya. Jika kita tidak menambahkan csrf_token pada form, aplikasi Django akan rentan terhadap serangan CSRF. Serangan CSRF biasanya memanfaatkan pengguna yang sudah login ke suatu aplikasi web yang tidak terlindungi. Penyerang bisa membuat sebuah halaman web atau email yang berisi elemen tersembunyi (seperti form atau permintaan AJAX) yang mengarahkan pengguna ke aplikasi target tanpa mereka sadari.
+
+## 5. Step-by-step checklist
+**Membuat input form:** membuat forms.py sebagai struktur utama form kemudian menyesuaikan views.py agar menampilkan form yang diinginkan. Setelah itu, dibuat berkas html form yang meng-extend html base untuk menampilkan form. Setelah itu, dibuat routing dari urls.py ke path-path yang berkaitan.
+**Menambahkan 4 fungsi view:** dalam views.py, dibuat fungsi show_xml dan show_json yang me-return HttpResponse serialisasi dalam bentuk XML dan JSON. Kemudian, dengan cara yang sama, dibuat fungsi show_xml_by_id dan show_json_by_id yang menerima parameter pkid. Kedua fungsi ini me-return HttpResponse yang sudah difilter agar hanya menampilkan objek dengan id yang sesuai.
+**Membuat routing url:** Menambahkan path setiap method ke urlpatterns dalam urls.py
+```
+...
+path('xml/', show_xml, name='show_xml'),
+path('json/', show_json, name='show_json'),
+path('xml/<str:id>/', show_xml_by_id, name='show_xml_by_id'),
+path('json/<str:id>/', show_json_by_id, name='show_json_by_id'),
+...
+```
+
+## 6. Keempat URL views dalam postman
