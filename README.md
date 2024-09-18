@@ -135,3 +135,11 @@ path('json/<str:id>/', show_json_by_id, name='show_json_by_id'),
 ```
 
 ## 6. Keempat URL views dalam postman
+**show_xml**
+![show_xml](https://i.ibb.co.com/qFTpTxF/Screenshot-640.png)
+**show_json**
+![show_json](https://i.ibb.co.com/VLkxLJP/Screenshot-641.png)
+**show_xml_by_id**
+![show_xml_by_id](https://i.ibb.co.com/prVZ6GL/Screenshot-642.png)
+**show_json_by_id**
+![show_json_by_id](https://i.ibb.co.com/mFhVrvt/Screenshot-643.png)
