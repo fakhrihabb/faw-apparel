@@ -202,3 +202,4 @@ Tidak Semua Cookies Aman. Jika tidak dienkripsi, data sensitif dapat dicuri mela
 ## 5. Implementasi checklist
 **Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar:** Memanfaatkan fungsi login, logout, dan form dari django.contrib.auth untuk membuat fungsi yang sesuai di views.py
 **Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal:** Melakukan input manual di website
+**Menghubungkan model Product dengan User:** dengan foreign key
