@@ -1,3 +1,4 @@
+# Table of Contents
 - [Tugas 2](#tugas-2)
   - [1. Step-by-step implementasi checklist untuk membuat project:](#1-step-by-step-implementasi-checklist-untuk-membuat-project)
     - [a. Membuat sebuah proyek Django baru.](#a-membuat-sebuah-proyek-django-baru)
