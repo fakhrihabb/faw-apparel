@@ -143,3 +143,63 @@ path('json/<str:id>/', show_json_by_id, name='show_json_by_id'),
 ![show_xml_by_id](https://i.ibb.co.com/prVZ6GL/Screenshot-642.png)
 **show_json_by_id**
 ![show_json_by_id](https://i.ibb.co.com/mFhVrvt/Screenshot-643.png)
+
+# Tugas 4
+
+## 1. HttpResponseRedirect() vs redirect()
+**HttpResponseRedirect()** merupakan respon HTTP di Django yang mengarahkan pengguna ke URL lain. Fungsi ini mengembalikan objek respon dengan kode status HTTP 302 (Found) atau 301 (Moved Permanently). URL tujuan harus diberikan secara langsung sebagai argumen. Contohnya:
+```
+from django.http import HttpResponseRedirect
+
+def my_view(request):
+    return HttpResponseRedirect('/some/url/')
+```
+**redirect()** adalah fungsi helper yang disediakan oleh Django dalam modul django.shortcuts. Fungsi ini lebih fleksibel karena dapat menerima berbagai argumen, antara lain:
+* URL absolut atau relatif
+* URL pattern name dan argumen posisional atau keyword untuk membangun URL menggunakan fungsi reverse()
+* Objek yang memiliki metode get_absolute_url()
+Contohnya:
+```
+from django.shortcuts import redirect
+
+def my_view(request):
+    return redirect('my-view-name', foo='bar')
+```
+
+## 2. Penghubungan model Product dengan User
+Product dan User dihubungkan dengan cara menambahkan foreign key User ke Product. Hal ini dilakukan dengan menyisipkan potongan kode berikut dalam fungsi create_product:
+```
+user = models.ForeignKey(User, on_delete=models.CASCADE)
+```
+
+## 3. Authentication vs authorization
+**Authentication:**
+* Proses verifikasi identitas pengguna
+* Dipastikan bahwa identitas yang dimasukkan sesuai dengan pengguna 
+* Dalam konteks login, biasanya melibatkan pemeriksaan username dan password
+**Authorization:**
+* Proses menentukan hak akses atau izin yang dimiliki pengguna
+* Menentukan apa yang boleh dan tidak boleh dilakukan oleh pengguna dalam sistem
+* Contoh: dosen memiliki akses yang berbeda dengan mahasiswa di SCELE
+
+## 4. Mengingat login & cookies
+**Cara Django mengingat pengguna yang Login:**
+* Menggunakan mekanisme session yang didukung oleh cookies
+* Setelah pengguna berhasil login, Django membuat sesi baru dan menyimpan ID sesi tersebut dalam cookie dalam browser pengguna
+* Setiap kali pengguna membuat permintaan baru, cookie ini dikirim kembali ke server, memungkinkan Django untuk mengidentifikasi pengguna
+* Informasi sesi disimpan di server (database, cache, atau file), bukan di cookie, sehingga meningkatkan keamanan
+
+**Kegunaan Lain dari Cookies:**
+* Menyimpan preferensi pengguna (co: bahasa pilihan, tema tampilan)
+* Mengingat keranjang belanja sebelum checkout (dalam platform _e-commerce_)
+* Mengingat informasi login untuk sesi berikutnya, sehingga tidak perlu login lagi (co: Google)
+* Mengumpulkan data untuk analisis perilaku pengguna (dengan consent)
+* Menyajikan konten yang disesuaikan berdasarkan interaksi pengguna sebelumnya
+
+**Keamanan Cookies:**
+Tidak Semua Cookies Aman. Jika tidak dienkripsi, data sensitif dapat dicuri melalui serangan man-in-the-middle. Aplikasi yang rentan terhadap Cross-Site Scripting juga memungkinkan penyerang untuk mencuri cookies dan mengambil alih sesi pengguna. Cookies pihak ketiga juga dapat digunakan untuk pelacakan lintas situs yang mengganggu privasi.
+
+## 5. Implementasi checklist
+**Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar:** Memanfaatkan fungsi login, logout, dan form dari django.contrib.auth untuk membuat fungsi yang sesuai di views.py
+**Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal:** Melakukan input manual di website
+**Menghubungkan model Product dengan User:** dengan foreign key
