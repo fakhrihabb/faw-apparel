@@ -6,7 +6,7 @@
 {% endblock meta %}
 {% block content %}
 {% include 'navbar.html' %}
-<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 bg-gray-100 flex flex-col">
+<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 bg-[#F2EED7] flex flex-col">
   <div class="relative grid grid-cols-1 z-30 md:grid-cols-3 gap-8">
       {% include "card_info.html" with title='App Name' value=app_name %}
       {% include "card_info.html" with title='Name' value=name %}
@@ -17,13 +17,13 @@
       </div>
     </div>
 </div>
-    <div class="px-3 mb-4">
-      <div class="flex rounded-md items-center bg-white py-2 px-4 w-fit">
+    <div class="px-8 mb-4">
+      <div class="flex rounded-md items-center bg-[#cfcbb6] py-2 px-4 w-fit">
         <h1 class="text-black text-center">Last Login: {{last_login}}</h1>
       </div>
     </div>
-    <div class="flex justify-end mb-6">
-        <a href="{% url 'main:create_product_entry' %}" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+    <div class="flex justify-end px-10 mb-6 bg-[#F2EED7]">
+        <a href="{% url 'main:create_product_entry' %}" class="bg-[#798645] hover:bg-[#606b36] text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
             Add New Product
         </a>
     </div>
