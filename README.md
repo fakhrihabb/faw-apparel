@@ -1,46 +1,4 @@
 # Table of Contents
-- [Tugas 2](#tugas-2)
-  - [1. Step-by-step implementasi checklist untuk membuat project:](#1-step-by-step-implementasi-checklist-untuk-membuat-project)
-    - [a. Membuat sebuah proyek Django baru.](#a-membuat-sebuah-proyek-django-baru)
-    - [b. Membuat aplikasi dengan nama main pada proyek tersebut.](#b-membuat-aplikasi-dengan-nama-main-pada-proyek-tersebut)
-    - [c. Melakukan routing pada proyek agar dapat menjalankan aplikasi main.](#c-melakukan-routing-pada-proyek-agar-dapat-menjalankan-aplikasi-main)
-    - [d. Membuat model pada aplikasi main dengan nama Product dan memiliki atribut wajib sebagai berikut: name, price, description](#d-membuat-model-pada-aplikasi-main-dengan-nama-product-dan-memiliki-atribut-wajib-sebagai-berikut-name-price-description)
-    - [e. Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.](#e-membuat-sebuah-fungsi-pada-viewspy-untuk-dikembalikan-ke-dalam-sebuah-template-html-yang-menampilkan-nama-aplikasi-serta-nama-dan-kelas-kamu)
-    - [f. Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.](#f-membuat-sebuah-routing-pada-urlspy-aplikasi-main-untuk-memetakan-fungsi-yang-telah-dibuat-pada-viewspy)
-    - [g. Melakukan deployment ke PWS terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.](#g-melakukan-deployment-ke-pws-terhadap-aplikasi-yang-sudah-dibuat-sehingga-nantinya-dapat-diakses-oleh-teman-temanmu-melalui-internet)
-  - [2. Bagan request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.](#2-bagan-request-client-ke-web-aplikasi-berbasis-django-beserta-responnya-dan-jelaskan-pada-bagan-tersebut-kaitan-antara-urlspy-viewspy-modelspy-dan-berkas-html)
-  - [3. Alasan framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak](#3-alasan-framework-django-dijadikan-permulaan-pembelajaran-pengembangan-perangkat-lunak)
-    - [a. Penggunaan yang mudah](#a-penggunaan-yang-mudah)
-    - [b. Dokumentasi yang komprehensif](#b-dokumentasi-yang-komprehensif)
-    - [c. Komunitas yang luas](#c-komunitas-yang-luas)
-  - [4. Alasan model pada Django disebut sebagai ORM](#4-alasan-model-pada-django-disebut-sebagai-orm)
-- [Tugas 3](#tugas-3)
-  - [1. Pentingnya Implementasi Data Delivery dalam Sebuah Platform](#1-pentingnya-implementasi-data-delivery-dalam-sebuah-platform)
-  - [2. XML Vs Json](#2-xml-vs-json)
-  - [3. Method is\_valid()](#3-method-is_valid)
-  - [4. Pentingnya csrf\_token](#4-pentingnya-csrf_token)
-  - [5. Step-by-step checklist](#5-step-by-step-checklist)
-  - [6. Keempat URL views dalam postman](#6-keempat-url-views-dalam-postman)
-- [Tugas 4](#tugas-4)
-  - [1. HttpResponseRedirect() vs redirect()](#1-httpresponseredirect-vs-redirect)
-  - [2. Penghubungan model Product dengan User](#2-penghubungan-model-product-dengan-user)
-  - [3. Authentication vs authorization](#3-authentication-vs-authorization)
-  - [4. Mengingat login \& cookies](#4-mengingat-login--cookies)
-  - [5. Implementasi checklist](#5-implementasi-checklist)
-- [Tugas 5](#tugas-5)
-  - [1. Urutan prioritas CSS selector](#1-urutan-prioritas-css-selector)
-  - [2. Pentingnya responsive design](#2-pentingnya-responsive-design)
-  - [3. Perbedaan margin, border, dan padding](#3-perbedaan-margin-border-dan-padding)
-  - [4. Konsep flexbox dan grid layout](#4-konsep-flexbox-dan-grid-layout)
-  - [5. Implementasi step-by-step](#5-implementasi-step-by-step)
-    - [a. Implementasikan fungsi untuk menghapus dan mengedit product](#a-implementasikan-fungsi-untuk-menghapus-dan-mengedit-product)
-      - [Edit](#edit)
-      - [Delete](#delete)
-      - [Langkah selanjutnya:](#langkah-selanjutnya)
-    - [b. Kustomisasi design](#b-kustomisasi-design)
-      - [Navbar](#navbar)
-      - [Login, register, dan tambah product](#login-register-dan-tambah-product)
-      - [Daftar product](#daftar-product)
 
 
 # Tugas 2
@@ -658,3 +616,162 @@ Lalu main.py disesuaikan
   </div>
 </div>
 ```
+
+# Tugas 4
+
+## 1. Manfaat Penggunaan JavaScript dalam Pengembangan Aplikasi Web
+JavaScript (JS) penting dalam pengembangan aplikasi web modern karena kemampuannya dalam mengatur _behaviour_ di sisi client (browser) secara dinamis. Beberapa alasan penggunaan JS:
+* **Interaktivitas:** JavaScript memungkinkan elemen web menjadi interaktif, seperti mengubah konten halaman tanpa perlu memuat ulang (via AJAX) dan mendukung fitur seperti drag-and-drop, animasi, validasi form secara dinamis, dan lain-lain.
+* **Single Page Application:** Framework JavaScript seperti React, Angular, atau Vue memungkinkan pengembangan SPA yang memungkinkan navigasi antar halaman tanpa perlu melakukan full refresh.
+* **Pemrosesan di sisi client:** Mengurangi beban server karena beberapa validasi dan manipulasi data dapat dilakukan langsung di browser.
+* **Responsive Design:** JavaScript dapat mendukung elemen-elemen halaman agar lebih responsif terhadap perubahan ukuran layar atau perangkat.
+* **Asynchronous Programming:** JS mendukung pemrograman asinkronus dengan AJAX atau API modern seperti fetch() untuk melakukan pemanggilan data secara real-time tanpa memengaruhi interaksi pengguna.
+
+## 2. Fungsi await ketika Menggunakan fetch() dan Dampaknya jika Tidak Menggunakan await
+`fetch()` adalah fungsi JavaScript untuk melakukan request ke server dan mengembalikan data. `await` digunakan untuk menunggu hasil dari promise yang dihasilkan oleh fetch(). Fungsi `await` memungkinkan kita untuk menghentikan eksekusi fungsi asinkron sampai promise selesai. Misalnya, ketika kita menggunakan `await fetch()`, JavaScript akan menunggu respons dari server dan hanya melanjutkan eksekusi setelah mendapatkan respons tersebut. Jika tidak menggunakan `await`, kode akan terus dieksekusi tanpa menunggu respons dari `fetch()`, dan bisa menyebabkan masalah aplikasi mungkin mencoba mengakses data yang belum tersedia.
+
+## 3. Mengapa Menggunakan Decorator csrf_exempt pada View untuk AJAX POST?
+CSRF (Cross-Site Request Forgery) adalah jenis serangan keamanan di mana penyerang mencoba memaksa pengguna yang diautentikasi untuk melakukan tindakan yang tidak mereka inginkan. Django secara default menyertakan perlindungan CSRF pada semua request POST untuk mencegah serangan ini. Pada situasi tertentu, kita mungkin perlu mengecualikan suatu view dari pemeriksaan CSRF, misalnya ketika menerima AJAX request dari sumber yang kita percayai. @csrf_exempt digunakan untuk menonaktifkan proteksi CSRF pada view tersebut.
+
+## 4. Mengapa Pembersihan Data Input Pengguna Dilakukan di Backend?
+* **Keamanan:** Pengguna bisa dengan mudah memodifikasi atau mem-bypass validasi yang dilakukan di frontend (misalnya dengan menggunakan DevTools di browser). Karena itu, backend harus selalu melakukan sanitasi untuk mencegah data berbahaya yang dapat menyebabkan serangan seperti SQL Injection atau Cross-Site Scripting (XSS).
+* **Konsistensi:** Semua data yang dikirimkan ke backend harus diverifikasi agar tetap konsisten dan valid, bahkan jika frontend sudah melakukan validasi. Data bisa datang dari berbagai sumber selain frontend, seperti API eksternal.
+* **Kontrol Penuh:** Backend memberikan kontrol penuh kepada developer untuk mengatur aturan sanitasi, validasi, dan pengolahan data sebelum disimpan di database.
+
+## 5. Langkah Implementasi Checklist (Step-by-Step)
+### a. Implementasi AJAX GET
+* Isi `product_card.html` diintegrasikan bersama dengan fungsi `fetch` dalam `main.html` untuk mengimplementasikan AJAX GET
+```
+async function refreshProductList() {
+    try {
+        const response = await fetch('{% url "main:get_user_products" %}', {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'  // Ensures it's recognized as an AJAX request
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch products');
+        }
+
+        const data = await response.json();
+        document.getElementById('product-list').innerHTML = ""; // Clear the product list
+
+        if (data.products.length === 0) {
+            // If no products are available, display a message
+            document.getElementById('product-list').innerHTML = '<p>No products available.</p>';
+        } else {
+            // Loop through the products and generate the HTML for each product
+            let htmlString = "";
+            data.products.forEach((product) => {
+                htmlString += `
+                    <div class="relative break-inside-avoid">
+                        <div class="relative top-5 bg-[#dee6be] shadow-md rounded-lg mb-6 break-inside-avoid flex flex-col border-2 border-[#626f47]">
+                            <div class="bg-[#798645] text-gray-800 p-4 rounded-t-lg border-b-2 border-[#626f47]">
+                                <h3 class="font-bold text-xl mb-2">${product.name}</h3>
+                                <h3 class="text-xl mb-2">($${product.price})</h3>
+                            </div>
+                            <div class="p-4">
+                                <p class="font-semibold text-lg mb-2">${product.description}</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-8 -right-0 flex space-x-1">
+                            <a href="/edit-product/${product.id}" class="hover:bg-yellow-800 text-white rounded-xl p-2 transition duration-300 shadow-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                </svg>
+                            </a>
+                            <a href="/delete-product/${product.id}" class="hover:bg-red-800 text-white rounded-xl p-2 transition duration-300 shadow-md">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                              </svg>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('product-list').innerHTML = htmlString; // Append the product cards
+        }
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        document.getElementById('product-list').innerHTML = '<p>Failed to load products.</p>';
+    }
+  };
+```
+* Ditambahkan fungsi create_ajax dalam `views.py`
+```
+@csrf_exempt
+@require_POST
+def create_ajax(request):
+    name = strip_tags(request.POST.get("name"))
+    price = request.POST.get("price")
+    description = strip_tags(request.POST.get("description"))
+    user = request.user
+
+    new_product = Product(name=name, price=price, description=description, user=user)
+    new_product.save()
+
+    return HttpResponse(b"CREATED", status=201)
+```
+* Dilakukan routing fungsi create_ajax ke `urls.py` dalam `main`
+```
+from main.views import ..., create_ajax
+...
+  path('create-ajax/', create_ajax, name='create_ajax'),
+  ...
+```
+### b. Implementasi AJAX POST
+* Penyesuaian seluruh isi `views.py` sehingga sesuai dengan AJAX (tidak lagi menggunakan context untuk product)
+* Menambahkan modal untuk menambahkan product menggunakan AJAX dalam `main.html`
+```
+const modal = document.getElementById('crudModal');
+  const modalContent = document.getElementById('crudModalContent');
+
+  function addProduct() {
+    fetch("{% url 'main:create_ajax' %}", {
+      method: "POST",
+      body: new FormData(document.querySelector('#productEntryForm')),
+    })
+    .then(response => refreshProductList())
+
+    document.getElementById("productEntryForm").reset();
+    document.querySelector("[data-modal-toggle='crudModal']").click();
+    hideModal()
+
+    return false;
+  }
+
+  document.getElementById("productEntryForm").addEventListener("submit", function(e) {
+    e.preventDefault();  // Prevent default form submission
+    addProduct();    // Call the function to handle AJAX submission
+  });
+
+  function showModal() {
+      const modal = document.getElementById('crudModal');
+      const modalContent = document.getElementById('crudModalContent');
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modalContent.classList.remove('opacity-0', 'scale-95');
+        modalContent.classList.add('opacity-100', 'scale-100');
+      }, 50);
+  }
+
+  function hideModal() {
+      const modal = document.getElementById('crudModal');
+      const modalContent = document.getElementById('crudModalContent');
+
+      modalContent.classList.remove('opacity-100', 'scale-100');
+      modalContent.classList.add('opacity-0', 'scale-95');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 150);
+  }
+
+  document.getElementById("cancelButton").addEventListener("click", hideModal);
+  document.getElementById("closeModalBtn").addEventListener("click", hideModal);
+  refreshProductList()
+```
+* Mengamankan AJAX form dari serangan XSS menggunakan `strip_tags` terhadap field yang menerima text/char dalam `views.py`
