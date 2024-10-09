@@ -1,3 +1,4 @@
+# Table of Contents
 - [Tugas 2](#tugas-2)
   - [1. Step-by-step implementasi checklist untuk membuat project:](#1-step-by-step-implementasi-checklist-untuk-membuat-project)
     - [a. Membuat sebuah proyek Django baru.](#a-membuat-sebuah-proyek-django-baru)
@@ -33,8 +34,8 @@
   - [4. Konsep flexbox dan grid layout](#4-konsep-flexbox-dan-grid-layout)
   - [5. Implementasi step-by-step](#5-implementasi-step-by-step)
     - [a. Implementasikan fungsi untuk menghapus dan mengedit product](#a-implementasikan-fungsi-untuk-menghapus-dan-mengedit-product)
-      - [Edit:](#edit)
-      - [Delete:](#delete)
+      - [Edit](#edit)
+      - [Delete](#delete)
       - [Langkah selanjutnya:](#langkah-selanjutnya)
     - [b. Kustomisasi design](#b-kustomisasi-design)
       - [Navbar](#navbar)
@@ -275,7 +276,7 @@ Flexbox (Flexible Box Layout) adalah model _layout_ yang memungkinkan elemen unt
 ## 5. Implementasi step-by-step
 
 ### a. Implementasikan fungsi untuk menghapus dan mengedit product
-#### Edit:
+#### Edit
 Pertama, diperoleh product dengan id yang sesuai menggunakan
 ```
 product = Product.objects.get(pk=id)
@@ -291,7 +292,7 @@ Lalu ditambahkan statement return berikut
 ```
 return render(request, "edit_product.html", context)
 ```
-#### Delete:
+#### Delete
 Pertama, diperoleh product dengan id yang sesuai menggunakan
 ```
 product = Product.objects.get(pk=id)
