@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.utils.html import strip_tags
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
@@ -77,9 +78,9 @@ def show_main(request):
 @csrf_exempt
 @require_POST
 def create_ajax(request):
-    name = request.POST.get("name")
+    name = strip_tags(request.POST.get("name"))
     price = request.POST.get("price")
-    description = request.POST.get("description")
+    description = strip_tags(request.POST.get("description"))
     user = request.user
 
     new_product = Product(name=name, price=price, description=description, user=user)
@@ -126,3 +127,11 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = Product.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def clean_name(self):
+    name = self.cleaned_data["name"]
+    return strip_tags(name)
+
+def clean_description(self):
+    description = self.cleaned_data["description"]
+    return strip_tags(description)
