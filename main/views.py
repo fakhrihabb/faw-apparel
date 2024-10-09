@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from main.forms import ProductEntryForm
 from main.models import Product
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
@@ -41,6 +41,22 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:show_main'))
     response.delete_cookie('last_login')
     return response
+
+@login_required
+def get_user_products(request):
+    try:
+        if request.method == 'GET' and request.headers.get('x-requested-with') == 'XMLHttpRequest':  # Ensure it's an AJAX GET request
+            user = request.user
+            print(f"User: {user}")
+            # Filter products based on the logged-in user (adjust this depending on your product model)
+            products = Product.objects.filter(user=user)  # Assuming Product has a foreign key to user
+            product_list = list(products.values())  # Convert queryset to a list of dicts
+            return JsonResponse({'products': product_list}, status=200)
+        return JsonResponse({'error': 'Invalid request'}, status=400)
+    except Exception as e:
+        # DEBUG: Print the exact error in the server logs
+        print(f"Error: {e}")
+        return JsonResponse({'error': str(e)}, status=500)
 
 @login_required(login_url='/login')
 def show_main(request):
