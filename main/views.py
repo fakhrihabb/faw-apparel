@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+
 from main.forms import ProductEntryForm
 from main.models import Product
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -60,16 +63,29 @@ def get_user_products(request):
 
 @login_required(login_url='/login')
 def show_main(request):
-    product_entries = Product.objects.filter(user=request.user)
+    # product = Product.objects.filter(user=request.user)
     context = {
         'name': request.user.username,
         'app_name': 'FawApparel',
         'class': 'PBP C',
-        'products': product_entries,
+        # 'products': product,
         'last_login': request.COOKIES.get('last_login'),
     }
 
     return render(request, 'main.html', context)
+
+@csrf_exempt
+@require_POST
+def create_ajax(request):
+    name = request.POST.get("name")
+    price = request.POST.get("price")
+    description = request.POST.get("description")
+    user = request.user
+
+    new_product = Product(name=name, price=price, description=description, user=user)
+    new_product.save()
+
+    return HttpResponse(b"CREATED", status=201)
 
 def create_product_entry(request):
     form = ProductEntryForm(request.POST or None)
@@ -96,17 +112,17 @@ def delete_product(request, id):
     return HttpResponseRedirect(reverse('main:show_main'))
 
 def show_xml(request):
-    data = Product.objects.all()
+    data = Product.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 def show_json(request):
-    data = Product.objects.all()
+    data = Product.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def show_xml_by_id(request, id):
-    data = Product.objects.filter(pk=id)
+    data = Product.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 def show_json_by_id(request, id):
-    data = Product.objects.filter(pk=id)
+    data = Product.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
