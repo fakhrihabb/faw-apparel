@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render, redirect
 from django.utils.html import strip_tags
 from django.views.decorators.csrf import csrf_exempt
@@ -13,6 +15,27 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import datetime
 from django.urls import reverse
+
+from django.views.decorators.csrf import csrf_exempt
+
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+        new_mood = Product.objects.create(
+            user=request.user,
+            name=data["name"],
+            price=int(data["price"]),
+            description=data["description"]
+        )
+
+        new_mood.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
 
 def register(request):
     form = UserCreationForm()
